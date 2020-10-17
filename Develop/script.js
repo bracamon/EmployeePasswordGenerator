@@ -10,21 +10,39 @@ var letterLowS = letterLow.split('')
 
 var number = '0123456789'
 var numberS = number.split('')
-console.log(numberS)
 
 var special = '!@#$%^&*()'
 var specialS = special.split('')
 
-var emoji = '😃❤️🥰😂😅😙👀🤩😎😍'
-var emojiS = emoji.split('')
-
+var emoji = ["⭐️","❤️","🥰","😂","😅","😙","👀","🤩","😎","😍"];
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = []
   
-  
+  var length = prompt("Enter number between 8-128 for password length");
+  if (length < 8 || length > 128) {
+    alert("Please enter a number between 8-128");
+    prompt("Enter number between 8-128 for password length");
+  } else {
+    var letterUpSTrue = confirm("Do you want to use uppercase letters?");
+    var letterLowSTrue = confirm("Do you want to use lowercase letters?");
+    var numberSTrue = confirm("Do you want to use numbers");
+    var specialSTrue = confirm("Do you want to use special characters?");
+    var emojiTrue = confirm("Do you want to use emojis?");
+
+    if (letterUpSTrue) {password.push(letterUpS)}
+    if (letterLowSTrue) {password.push(letterLowS)}
+    if (numberSTrue) {password.push(numberS)}
+    if (specialSTrue) {password.push(specialS)}
+    if (emojiTrue) {password.push(emoji)}
+    
+    
+    
+    
+    
+  }
 
 
 
@@ -32,19 +50,7 @@ function writePassword() {
 
 }
 
-var length = prompt("Enter number between 8-128 for password length");
-if (length < 8 || length > 128) {
-  alert("Please enter a number between 8-128");
-  prompt("Enter number between 8-128 for password length");
-} else {
-  var letterUpSTrue = confirm("Do you want to use uppercase letters?");
-  var letterLowSTrue = confirm("Do you want to use lowercase letters?");
-  var numberSTrue = confirm("Do you want to use numbers");
-  var specialSTrue = confirm("Do you want to use special characters?");
-  var emojiSTrue = confirm("Do you want to use emojis?");
 
-
-}
 
 
 
