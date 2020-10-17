@@ -32,10 +32,19 @@ function writePassword() {
 
 }
 
-var length = prompt("Enter number between 8-128 for password length")
+var length = prompt("Enter number between 8-128 for password length");
 if (length < 8 || length > 128) {
-  alert("Please enter a number between 8-128")
-} 
+  alert("Please enter a number between 8-128");
+  prompt("Enter number between 8-128 for password length");
+} else {
+  var letterUpSTrue = confirm("Do you want to use uppercase letters?");
+  var letterLowSTrue = confirm("Do you want to use lowercase letters?");
+  var numberSTrue = confirm("Do you want to use numbers");
+  var specialSTrue = confirm("Do you want to use special characters?");
+  var emojiSTrue = confirm("Do you want to use emojis?");
+
+
+}
 
 
 
