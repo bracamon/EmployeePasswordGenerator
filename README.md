@@ -39,7 +39,7 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Deployed Application Link and Preview
 
-Link: 
+Link: https://bracamon.github.io/EmployeePasswordGenerator/index.html
 
 The following image shows the web application's appearance and functionality:
 
