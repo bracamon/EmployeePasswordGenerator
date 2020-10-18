@@ -1,59 +1,54 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-var passwordText = document.querySelector("#password");
-
 var letterUp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var letterUpS = letterUp.split('') // creates array of individual values out of continuous string
+var letterUpS = letterUp.split('')
 
 var letterLow = 'abcdefghijklmnopqrstuvwxyz'
 var letterLowS = letterLow.split('')
 
-var number = '0123456789'
-var numberS = number.split('')
+var number = [0,1,2,3,4,5,6,7,8,9]
 
 var special = '!@#$%^&*()'
 var specialS = special.split('')
 
 var emoji = ["⭐️","❤️","🥰","😂","😅","😙","👀","🤩","😎","😍"];
 
+var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
-// Write password to the #password input
 function writePassword() {
-  var password = []
+  var possibles = []
   
-  var length = prompt("Enter number between 8-128 for password length");
-  if (length < 8 || length > 128) {
+  var length = parseInt(prompt("Enter number between 8-128 for password length"));
+
+  if (length < 8 || length > 128 || isNaN(length)) {
     alert("Please enter a number between 8-128");
-    prompt("Enter number between 8-128 for password length");
   } else {
+
     var letterUpSTrue = confirm("Do you want to use uppercase letters?");
     var letterLowSTrue = confirm("Do you want to use lowercase letters?");
-    var numberSTrue = confirm("Do you want to use numbers");
+    var numberTrue = confirm("Do you want to use numbers");
     var specialSTrue = confirm("Do you want to use special characters?");
     var emojiTrue = confirm("Do you want to use emojis?");
 
-    if (letterUpSTrue) {password.push(letterUpS)}
-    if (letterLowSTrue) {password.push(letterLowS)}
-    if (numberSTrue) {password.push(numberS)}
-    if (specialSTrue) {password.push(specialS)}
-    if (emojiTrue) {password.push(emoji)}
+    if (letterUpSTrue) {possibles.push(letterUpS)};
+    if (letterLowSTrue) {possibles.push(letterLowS)};
+    if (numberTrue) {possibles.push(number)};
+    if (specialSTrue) {possibles.push(specialS)};
+    if (emojiTrue) {possibles.push(emoji)};
     
-    
-    
-    
-    
+    var password = "";
+
+    while(password.length < length) {
+      for(let i = 0; i < possibles.length; i++){
+        if(password.length < length){
+          let rand = Math.floor(Math.random() * possibles[i].length);
+          password += possibles[i][rand];
+        }
+      }
+    }
+    console.log(password, `password length: ${password.length}`);
+    passwordText.value = password;
   }
-
-
-
-  passwordText.value = password;
-
 }
 
-
-
-
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
